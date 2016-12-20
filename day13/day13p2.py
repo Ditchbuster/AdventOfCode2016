@@ -77,15 +77,20 @@ while not frontier.empty():
             nxt.frm = current
             visited.append(nxt)
 
-
-temp = visited[visited.index(myTile(39,31))]
-step = 0
-while temp.frm != None:
-    temp = temp.frm
-    step += 1
+spots = 0
+for temp in visited:
+    step = 0
+    while temp.frm != None:
+        temp = temp.frm
+        step += 1
+        if step > 50:
+            break
+    else:
+        spots += 1   
+print(spots)
 for tile in visited:
     maze[tile.y][tile.x] = 'O'
 printMaze()
-print(step)
+
 
     
